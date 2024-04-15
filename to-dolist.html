@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>To Do List</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body style="text-transform: capitalize !important;">
+    <header>
+        <nav class="navbar bg-dark">
+            <div class="container-fluid d-flex justify-content-center allign-content-center">
+                <a class="navbar-brand text-white fs-1" href="#">
+                    Freelancer Biswajit
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-5 ">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 m-1 p-4  bg-secondary">
+
+                    <div class="form d-flex container-fluid">
+                        <input type="text" name="" id="work" class="form-control rounded-start w-75"
+                            placeholder="Enter The Task"
+                            style="border-top-left-radius: 10px !important;border-top-right-radius: 0px !important;border-bottom-left-radius: 10px !important;border-bottom-right-radius: 0px !important; height: 3rem !important;">
+                        <input type="submit" value="Create" class="btn btn-primary rounded-end w-25"
+                            style="border-top-left-radius: 0px !important;border-top-right-radius: 10px !important;border-bottom-left-radius: 0px !important;border-bottom-right-radius: 10px !important; height: 3rem !important;"
+                            id="create">
+                    </div>
+                    <ul class="list-group p-2 text-uppercase" >
+                        <li class="d-flex list-group-item justify-content-between align-items-center text-capitalize">
+                            <h5>Your To day's Work </h5>
+                            <div class="d-flex ">
+                                <div class="d-flex">
+                                    <h5 class="me-4">Edit</h5>
+                                    <h5>Delete</h5>
+                                </div>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let create = document.querySelector('#create');
+        let parentnode = document.getElementsByClassName('list-group')
+        create.addEventListener('click', function (e) {
+            let ce = e.currentTarget;
+            let pe = ce.previousElementSibling
+            let new_Work = document.createElement('li')
+            let currelement = pe.value        
+             if (currelement.length >= 1) {
+                new_Work.className = 'd-flex list-group-item justify-content-between align-items-center'
+                new_Work.innerHTML = `<h5>${currelement}</h5>
+                                    <div class="d-flex ">
+                                    <input type="button" value="Edit" class="btn btn-info me-1 " id = "edit" onclick = "edititem(this)">
+                                    <input type="button" value="Delete" class="btn btn-danger" id = "delete" onclick = "deleteitem(this)">`
+                let ullist = document.querySelector('.list-group')
+                ullist.appendChild(new_Work)
+            } else {
+                alert('Enter a Valid Work')   
+            }
+        })
+        function deleteitem(element) {
+            element.parentNode.parentNode.remove()
+            // let parentnode = document.querySelector('.list-group')
+            
+            // if (parentnode.children.length <=1) {
+            //     const showEmpty = "Start Entering Your Work To See The Result"
+            //     let message_box = document.createElement('li')
+            //     message_box.className='d-flex list-group-item justify-content-between align-items-center text-capitalize fs-5 empty-msgbox'
+            //     message_box.innerHTML= `<h5>${showEmpty}</h5>`
+            //     parentnode.appendChild(message_box)
+            // }
+
+
+        }
+        function edititem(element) {
+            let work = element.parentNode.previousElementSibling
+            let new_value = prompt("Enter New Work: ")
+            if (new_value.length > 1) { work.textContent = new_value } else alert('Enter a Valid Work')
+        }
+    </script>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
